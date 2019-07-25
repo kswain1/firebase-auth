@@ -1,4 +1,18 @@
 const enrollmentList = document.querySelector('.enrollmentForm');
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
+
+const setupUI = (user) => {
+  if (user) {
+    // toggle UI elements if they are logged IN update the UI
+    loggedInLinks.forEach(item => item.style.display = 'block');
+    loggedOutLinks.forEach(item => item.style.display = 'none');
+  } else {
+    // toggle UI elements Logged out elements will be updated
+    loggedInLinks.forEach(item => item.style.display = 'none');
+    loggedOutLinks.forEach(item => item.style.display = 'block')
+  }
+}
 
 // setup enrollmentForm
 const setupEnrollmentList = (enrollmentData) => {

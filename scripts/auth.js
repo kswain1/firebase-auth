@@ -5,9 +5,11 @@ auth.onAuthStateChanged(user => {
     db.collection('enrollmentForm').get().then(snapshot => {
       console.log(snapshot.docs);
       setupEnrollmentList(snapshot.docs);
+      setupUI(user);
     });
   } else {
     console.log('user logged out');
+    setupUI(); 
     setupEnrollmentList([]);
   }
 })
