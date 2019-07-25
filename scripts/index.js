@@ -1,13 +1,28 @@
 const enrollmentList = document.querySelector('.enrollmentForm');
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
+const accountDetails = document.querySelector('.account-details');
 
 const setupUI = (user) => {
   if (user) {
+    //account info
+    db.collection('users').doc(user.uid).get().then(doc => {
+      console.log(doc.data());
+      const html = `
+        <div> Logged in as ${user.email}</div>
+        <div>Phone Number: ${doc.data().phoneNumber} </div>
+      `;
+      accountDetails.innerHTML = html;
+    });
+
     // toggle UI elements if they are logged IN update the UI
     loggedInLinks.forEach(item => item.style.display = 'block');
     loggedOutLinks.forEach(item => item.style.display = 'none');
+    console.log()
   } else {
+    //hide account info
+    accountDetails.innerHTML = '';
+
     // toggle UI elements Logged out elements will be updated
     loggedInLinks.forEach(item => item.style.display = 'none');
     loggedOutLinks.forEach(item => item.style.display = 'block')
@@ -16,7 +31,6 @@ const setupUI = (user) => {
 
 // setup enrollmentForm
 const setupEnrollmentList = (enrollmentData) => {
-
   if (enrollmentData.length) {
     let html = '';
     enrollmentData.forEach(doc => {
