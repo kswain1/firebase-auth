@@ -1,7 +1,7 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
-    db.collection('guides').onSnapshot(snapshot => {
+    db.collection('enrollmentForm').onSnapshot(snapshot => {
       setupGuides(snapshot.docs);
       setupUI(user);
     }, err => console.log(err.message));
@@ -15,7 +15,7 @@ auth.onAuthStateChanged(user => {
 const createForm = document.querySelector('#create-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  db.collection('guides').add({
+  db.collection('enrollmentForm').add({
     title: createForm.title.value,
     content: createForm.content.value
   }).then(() => {
@@ -32,7 +32,7 @@ createForm.addEventListener('submit', (e) => {
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   // get user info
   const email = signupForm['signup-email'].value;
   const password = signupForm['signup-password'].value;
@@ -57,7 +57,7 @@ logout.addEventListener('click', (e) => {
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   // get user info
   const email = loginForm['login-email'].value;
   const password = loginForm['login-password'].value;

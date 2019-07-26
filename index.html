@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <title>GameGuidez</title>
 </head>
-<body class="grey lighten-3"">
+<body class="grey lighten-3">
 
   <!-- NAVBAR -->
   <nav class="z-depth-0 grey lighten-4">
@@ -104,20 +104,23 @@
 
     </ul>
   </div>
-  
+
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
   <script>
     // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyDlDUJhsP0_uh-YpaRfTOhWZsyY_hLukTw",
-      authDomain: "net-ninja-sandbox.firebaseapp.com",
-      databaseURL: "https://net-ninja-sandbox.firebaseio.com",
-      projectId: "net-ninja-sandbox"
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBaz58W_25YFYFqpNBoGs8c3U1rP_4aheg",
+      authDomain: "dabomb-af726.firebaseapp.com",
+      databaseURL: "https://dabomb-af726.firebaseio.com",
+      projectId: "dabomb-af726",
+      appId: "1:218062600528:web:cab381a1f9a29dbb"
     };
-    firebase.initializeApp(config);
-    
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
     // make auth and firestore references
     const auth = firebase.auth();
     const db = firebase.firestore();
